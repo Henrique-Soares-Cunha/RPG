@@ -3,7 +3,7 @@ import java.io.*;
 public class leitorDeArquivos {
     private BufferedReader leitor;
     private String linha;
-    private final int delay = 50;
+    private final int delay = 78;
 
     public leitorDeArquivos() throws FileNotFoundException {
         leitor = new BufferedReader(new FileReader("historia.txt"));
