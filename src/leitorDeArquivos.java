@@ -5,8 +5,8 @@ public class leitorDeArquivos {
     private String linha;
     private final int delay = 78;
 
-    public leitorDeArquivos() throws FileNotFoundException {
-        leitor = new BufferedReader(new FileReader("historia.txt"));
+    public leitorDeArquivos(String arq) throws FileNotFoundException {
+        leitor = new BufferedReader(new FileReader("src/Historia/"+arq));
         linha = null;
     }
 

@@ -1,4 +1,4 @@
-import Heroi.*;
+import Personagens.Heroi.*;
 import Sons.narracao.Narracao;
 
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ public class Main {
             Narracao narracao = new Narracao();
             narracao.tocarNarracao(); // toca a voz
 
-            leitorDeArquivos leitor = new leitorDeArquivos();
+            leitorDeArquivos leitor = new leitorDeArquivos("Introducao.txt");
             leitor.lerArquivo(); // mostra o texto da história (letra por letra)
 
         } catch (Exception e) {
