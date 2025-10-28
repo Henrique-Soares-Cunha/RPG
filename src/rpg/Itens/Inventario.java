@@ -1,4 +1,4 @@
-package Itens;
+package rpg.Itens;
 
 public class Inventario {
     

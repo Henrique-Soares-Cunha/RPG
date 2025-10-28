@@ -1,8 +1,6 @@
-import Personagens.Heroi.*;
-import Sons.narracao.Narracao;
+package rpg;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import rpg.Sons.narracao.Narracao;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,7 +10,7 @@ public class Main {
             Narracao narracao = new Narracao();
             narracao.tocarNarracao(); // toca a voz
 
-            leitorDeArquivos leitor = new leitorDeArquivos("Introducao.txt");
+            leitorDeArquivosTxt leitor = new leitorDeArquivosTxt("Introducao.txt");
             leitor.lerArquivo(); // mostra o texto da história (letra por letra)
 
         } catch (Exception e) {

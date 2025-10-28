@@ -1,6 +1,6 @@
-package Personagens.Heroi;
+package rpg.Personagens.Heroi;
 
-import Personagens.BasePersonagens;
+import rpg.Personagens.BasePersonagens;
 
 public class Roqueiro extends BasePersonagens {
     public Roqueiro(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {

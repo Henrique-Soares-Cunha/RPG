@@ -1,12 +1,14 @@
+package rpg;
+
 import java.io.*;
 
-public class leitorDeArquivos {
+public class leitorDeArquivosTxt {
     private BufferedReader leitor;
     private String linha;
     private final int delay = 78;
 
-    public leitorDeArquivos(String arq) throws FileNotFoundException {
-        leitor = new BufferedReader(new FileReader("src/Historia/"+arq));
+    public leitorDeArquivosTxt(String arq) throws FileNotFoundException {
+        leitor = new BufferedReader(new FileReader("src/rpg/Historia/"+arq));
         linha = null;
     }
 

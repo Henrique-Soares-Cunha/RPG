@@ -1,4 +1,7 @@
+package rpg;
+
 public final class Dados {
+    public static int Dpersonalizado(int min, int max) {return (int)(Math.random() * (max - min + 1) + min);}
     public static int D4 (){
         return (int)(Math.random() * 4) + 1;
     }
