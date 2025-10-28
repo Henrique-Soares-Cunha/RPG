@@ -1,4 +1,4 @@
-package Telas;
+package rpg.Telas;
 
 public class TelaCombate {
 }
