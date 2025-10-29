@@ -25,3 +25,4 @@ public abstract class Monstros extends BasePersonagens {
         return this.ataque * Dados.D4();
     }
 }
+
