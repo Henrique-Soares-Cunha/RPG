@@ -1,21 +1,21 @@
 package rpg.itens;
 
 public class Itens implements Comparable<Itens>{
-    private String Nome;
-    private String Descricao;
-    private int quanridade;
+    private String nome;
+    private String descricao;
+    private int quantidade;
     private int efeito;
 
-    public Itens(String nome, String descricao, int quanridade, int efeito) throws Exception{
+    public Itens(String nome, String descricao, int quantidade, int efeito) throws Exception{
         if (nome == null || descricao == null) {
             throw new Exception("Nome ou descrição ausentes");
         }
-        if (quanridade < 0){
+        if (quantidade < 0){
             throw new Exception("Quantidade negativo");
         }
-        this.Nome = nome;
-        this.Descricao = descricao;
-        this.quanridade = quanridade;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
         this.efeito = efeito;
 
 
@@ -23,13 +23,13 @@ public class Itens implements Comparable<Itens>{
 
     //getters e settter
     public String getNome() {
-        return Nome;
+        return nome;
     }
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
-    public int getQuanridade() {
-        return quanridade;
+    public int getQuantidade() {
+        return quantidade;
     }
     public int getEfeito() {
         return efeito;
@@ -37,18 +37,28 @@ public class Itens implements Comparable<Itens>{
     public void setEfeito(int efeito) {
         this.efeito = efeito;
     }
-    public void setQuanridade(int quanridade) {
-        this.quanridade = quanridade;
+    public void setQuanridade(int quantidade) {
+        this.quantidade = quantidade;
     }
     public void setNome(String nome) {
-        this.Nome = nome;
+        this.nome = nome;
     }
     public void setDescricao(String descricao) {
-        this.Descricao = descricao;
+        this.descricao = descricao;
     }
 
     public void addQuantidade(int quantidade){
-        this.quanridade =  this.quanridade + quantidade;
+        this.quantidade =  this.quantidade + quantidade;
+        }
+
+    public Itens(Itens modelo) throws Exception{
+        if (modelo == null){
+            throw new Exception("Item ausente");
+        }
+        this.nome = modelo.nome;
+        this.descricao = modelo.descricao;
+        this.quantidade = modelo.quantidade;
+        this.efeito = modelo.efeito;
     }
 
     @Override
@@ -58,12 +68,25 @@ public class Itens implements Comparable<Itens>{
         if (obj.getClass() != this.getClass()) return false;
 
         Itens comparacao = (Itens)(obj);
-        if (this.Nome != comparacao.Nome) return false;
-        if (this.Descricao != comparacao.Descricao) return false;
+        if (this.nome != comparacao.nome) return false;
+        if (this.descricao != comparacao.descricao) return false;
         if (this.efeito != comparacao.efeito) return false;
 
         return true;
     }
+    @Override
+    public int hashCode() {
+        int ret = 1;
+        ret = ret * 2 + this.nome.hashCode();
+        ret = ret * 2 + this.descricao.hashCode();
+        ret = ret * 2 + Integer.valueOf(this.quantidade).hashCode();
+        ret = ret * 2 + Integer.valueOf(this.efeito).hashCode();
+        if (ret < 0) ret = -ret;
+        return ret;
+    }
+
+
+
 
     @Override
     public int compareTo(Itens outroItem){
@@ -74,3 +97,6 @@ public class Itens implements Comparable<Itens>{
         return 6;
     }
 }
+
+
+
