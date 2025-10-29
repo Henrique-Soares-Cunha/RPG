@@ -1,6 +1,6 @@
 package rpg;
 
-import rpg.rpg.sons.narracao.Narracao;
+import rpg.sons.narracao.Narracao;
 import rpg.LeitorDeArquivosTxt;
 import rpg.personagens.BasePersonagens;
 import rpg.personagens.inimigos.SoldadoDaDitadura;
