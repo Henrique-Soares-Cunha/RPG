@@ -1,4 +1,4 @@
-package rpg.Sons.narracao;
+package rpg.rpg.sons.narracao;
 
 import javax.sound.sampled.*;
 import java.io.File;

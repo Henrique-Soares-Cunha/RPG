@@ -1,6 +1,6 @@
-package rpg.Personagens.Heroi;
+package rpg.personagens.heroi;
 
-import rpg.Personagens.BasePersonagens;
+import rpg.personagens.BasePersonagens;
 
 public class Deejay extends BasePersonagens {
     public Deejay(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {

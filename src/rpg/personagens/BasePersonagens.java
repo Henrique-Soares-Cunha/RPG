@@ -1,4 +1,4 @@
-package rpg.Personagens;
+package rpg.personagens;
 
 import rpg.Itens.Inventario;
 
@@ -11,20 +11,19 @@ public abstract class BasePersonagens {
     protected Inventario inventario;
 
 
-    public BasePersonagens (String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception{
-    setNome(nome);
-    try {
-        setNome(nome);
-        setAtaque(ataque);
-        setDefesa(defesa);
-        setNivel(1);
-        setPontosVida(pontosVida);
-    }
-    catch (Exception e){
-        throw e;
-    }
-    if (inventario == null){throw new Exception("Inventário não pode ser nulo!");}
-    this.inventario = new Inventario();
+    public BasePersonagens (String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
+        try {
+            this.setNome(nome);
+            this.setAtaque(ataque);
+            this.setDefesa(defesa);
+            this.setNivel(nivel);
+            this.setPontosVida(pontosVida);
+
+            this.inventario = new Inventario();
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     //getters
@@ -53,7 +52,9 @@ public abstract class BasePersonagens {
         this.nome = nome;
     }
     public void setPontosVida(int pontosVida)throws Exception{
-        if (pontosVida <= 0){throw new Exception("Vida 0 personagem morreu");}
+        if (pontosVida <= 0){
+            this.pontosVida = pontosVida;
+            throw new Exception("O personagem"+this.nome+"morreu");}
         this.pontosVida = pontosVida;
     }
     public void setAtaque(int ataque)throws Exception{
@@ -66,6 +67,7 @@ public abstract class BasePersonagens {
     }
     public void setNivel(int nivel)throws Exception{
         if (nivel <= 0){throw new Exception("Nível negativo impossível");}
+        this.nivel = nivel;
     }
 }
 
