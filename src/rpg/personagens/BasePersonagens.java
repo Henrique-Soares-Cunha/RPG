@@ -1,6 +1,6 @@
 package rpg.personagens;
 
-import rpg.Itens.Inventario;
+import rpg.itens.Inventario;
 
 public abstract class BasePersonagens {
     protected String nome;

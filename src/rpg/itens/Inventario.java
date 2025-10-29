@@ -1,4 +1,4 @@
-package rpg.Itens;
+package rpg.itens;
 
 public class Inventario {
     
