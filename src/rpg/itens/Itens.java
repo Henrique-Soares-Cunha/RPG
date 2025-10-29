@@ -21,6 +21,36 @@ public class Itens implements Comparable<Itens>{
 
     }
 
+    //getters e settter
+    public String getNome() {
+        return Nome;
+    }
+    public String getDescricao() {
+        return Descricao;
+    }
+    public int getQuanridade() {
+        return quanridade;
+    }
+    public int getEfeito() {
+        return efeito;
+    }
+    public void setEfeito(int efeito) {
+        this.efeito = efeito;
+    }
+    public void setQuanridade(int quanridade) {
+        this.quanridade = quanridade;
+    }
+    public void setNome(String nome) {
+        this.Nome = nome;
+    }
+    public void setDescricao(String descricao) {
+        this.Descricao = descricao;
+    }
+
+    public void addQuantidade(int quantidade){
+        this.quanridade =  this.quanridade + quantidade;
+    }
+
     @Override
     public boolean equals(Object obj){
         if (obj == this) return true;
