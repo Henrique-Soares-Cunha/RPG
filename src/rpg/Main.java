@@ -17,8 +17,7 @@ public class Main {
             Narracao narracao = new Narracao();
             narracao.tocarNarracao(); // toca a voz
 
-            LeitorDeArquivosTxt introducao = new LeitorDeArquivosTxt("Introducao.txt");
-            introducao.lerArquivo(); // mostra o texto da história (letra por letra)
+             // mostra o texto da história (letra por letra)
 
             Scanner input = new Scanner(System.in);
             int o;

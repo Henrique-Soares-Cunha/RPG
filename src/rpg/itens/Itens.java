@@ -59,11 +59,37 @@ public class Itens implements Comparable<Itens>{
         this.efeito = modelo.efeito;
     }
 
-    @Override
 
+    public String getValorEfeito(){
+        switch (this.efeito){
+            case "cura":
+                return "c1";
+            case "grandeCura":
+                return "c3";
+            case "giganteCura":
+                return "c8";
+            case "mehoraAtaque":
+                return "a1";
+            case "grandeMelhoraAtaque":
+                return "a2";
+            case "giganteMelhoraAtaque":
+                return "a4";
+            case "melhoraDefesa":
+                return "d1";
+            case "grandeMelhoraDefesa":
+                return "d2";
+            case "giganteMelhoraDefesa":
+                return "d4";
+            default:
+                return "";
+        }
+    }
+
+    @Override
     public String toString(){
         return nome + " (x" + quantidade + ", efeito " + efeito + ")";
     }
+
     @Override
     public boolean equals(Object obj){
         if (obj == this) return true;
