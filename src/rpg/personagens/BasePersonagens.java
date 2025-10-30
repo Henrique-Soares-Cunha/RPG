@@ -12,18 +12,15 @@ public abstract class BasePersonagens {
 
 
     public BasePersonagens (String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
-        try {
-            this.setNome(nome);
-            this.setAtaque(ataque);
-            this.setDefesa(defesa);
-            this.setNivel(nivel);
-            this.setPontosVida(pontosVida);
 
-            this.inventario = new Inventario();
+    this.setNome(nome);
+    this.setAtaque(ataque);
+    this.setDefesa(defesa);
+    this.setNivel(nivel);
+    this.setPontosVida(pontosVida);
 
-        } catch (Exception e) {
-            throw e;
-        }
+    this.inventario = new Inventario();
+
     }
 
     //getters
@@ -68,6 +65,27 @@ public abstract class BasePersonagens {
     public void setNivel(int nivel)throws Exception{
         if (nivel <= 0){throw new Exception("Nível negativo impossível");}
         this.nivel = nivel;
+    }
+
+    //manipular atributos int
+    public int addVida(int vida){
+        if (this.pontosVida <= vida){
+            this.pontosVida = 0;
+            return 0;
+        }
+        this.pontosVida += vida;
+        return this.pontosVida;
+    }
+    public int addNivel(){
+        return ++this.nivel;
+    }
+    public int addDefesa(){
+         this.defesa += 5;
+         return this.defesa;
+    }
+    public int addAtaque(){
+        this.ataque += 5;
+        return this.ataque;
     }
 }
 
