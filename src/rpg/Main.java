@@ -1,5 +1,7 @@
 package rpg;
 
+import rpg.itens.Inventario;
+import rpg.itens.Itens;
 import rpg.sons.narracao.Narracao;
 import rpg.LeitorDeArquivosTxt;
 import rpg.personagens.BasePersonagens;
@@ -17,9 +19,6 @@ public class Main {
 
             LeitorDeArquivosTxt introducao = new LeitorDeArquivosTxt("Introducao.txt");
             introducao.lerArquivo(); // mostra o texto da história (letra por letra)
-
-            LeitorDeArquivosTxt A1P1 = new LeitorDeArquivosTxt("A1P1.txt");
-            A1P1.lerArquivo();
 
             Scanner input = new Scanner(System.in);
             int o;
@@ -54,16 +53,53 @@ public class Main {
                 case 9:
 
                     break;
+                default:
+                    System.out.println("classe invalida vagabundo nesse caso vc perdeu");
+                    break;
             }
-
+            
+            // Aqui inicia os testes
 
             // 3️⃣ Cria personagens (usando sua BasePersonagens e SoldadoDaDitadura)
-            BasePersonagens heroi = new BasePersonagens("Herói", 100, 20, 10, 1){};
+            BasePersonagens heroi = new BasePersonagens("DeeJay", 100, 20, 10, 1) {};
             BasePersonagens inimigo = new SoldadoDaDitadura("Soldado da Ditadura");
 
             // 4️⃣ Inicia a tela de combate no terminal
             TelaCombate tela = new TelaCombate(heroi, inimigo);
             tela.exibirTelaCombate();
+
+            // Cria o inventário
+            Inventario inv = new Inventario();
+
+            // Cria alguns itens
+            Itens espada = new Itens("Espada", "Arma afiada", 1, "Dano alto");
+            Itens pocao = new Itens("Poção", "Recupera vida", 3, "Cura");
+            Itens escudo = new Itens("Escudo", "Defesa básica", 2, "Defesa");
+
+            System.out.println(espada);
+            // Adiciona os itens
+            inv.adicionarItem(espada);
+            inv.adicionarItem(pocao);
+            inv.adicionarItem(escudo);
+
+            // Mostra inventário ordenado por quantidade
+            inv.mostrarInventario();
+
+            // Mostra total de itens
+            System.out.println("Total de itens: " + inv.totalItens());
+
+            // Remove 1 poção
+            inv.removerItem("Poção", 1);
+
+            System.out.println("Após remover 1 poção:");
+            inv.mostrarInventario();
+
+            // Testa o clone (cópia do inventário)
+            Inventario copia = (Inventario) inv.clone();
+            System.out.println("Inventário clonado:");
+            copia.mostrarInventario();
+
+
 
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());

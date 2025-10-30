@@ -2,6 +2,7 @@ package rpg.telas;
 
 import java.util.Scanner;
 import rpg.personagens.BasePersonagens;
+import rpg.itens.Inventario;
 
 public class TelaCombate {
 
@@ -23,7 +24,8 @@ public class TelaCombate {
             System.out.println("1 - Atacar");
             System.out.println("2 - Esquivar");
             System.out.println("3 - Fugir");
-            System.out.println("4 - Usar item");
+            System.out.println("4 - Mostrar inventario");
+            System.out.println("5 - Usar item");
 
 
             System.out.print("\nDigite sua escolha: ");
@@ -46,20 +48,24 @@ public class TelaCombate {
     private void executarAcao(int opcao) throws Exception {
         switch (opcao) {
             case 1:
-                System.out.println("\n Você atacou " + inimigo.getNome() + "!");
+                System.out.println("Você atacou " + inimigo.getNome() + "!");
                 inimigo.setPontosVida(Math.max(0, inimigo.getPontosVida() - jogador.getAtaque()));
                 break;
             case 2:
-                System.out.println("\n Você tenta esquivar do próximo ataque...");
+                System.out.println("Você tenta esquivar do próximo ataque...");
                 break;
             case 3:
-                System.out.println("\n Você decide fugir da batalha...");
+                System.out.println("Você decide fugir da batalha...");
                 break;
             case 4:
-                System.out.println("\n Você tenta usar um item (a implementar)...");
+                System.out.println("Seu inventario: ");
+                jogador.getInventario().mostrarInventario();
+                break;
+            case 5:
+                System.out.println("Voce usou o item: ");
                 break;
             default:
-                System.out.println("\n Opção inválida!");
+                System.out.println("Opção inválida!");
         }
     }
 
