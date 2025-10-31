@@ -15,19 +15,19 @@ public class Jogo {
             System.out.println("voce vai enfrentar um inimigo");
             return 0;
         }
-        if(dado == 2){
+        if(dado >= 2 && dado <= 3){
             System.out.println("Voce encontrou um inimigo");
             return 1;
         }
-        if (dado >=3 && dado <= 5){
+        if (dado >=4 && dado <= 8){
             System.out.println("Voce não achou nada");
             return 2;
         }
-        if (dado >= 6 && dado <= 9){
+        if (dado >= 9 && dado <= 10){
             System.out.println("Voce encontrou um item");
             return 3;
         }
-        if (dado >= 10 && dado <= 12){
+        if (dado >= 11 && dado <= 12){
             System.out.println("Voce encontrou um ótimo item");
             return 4;
         }

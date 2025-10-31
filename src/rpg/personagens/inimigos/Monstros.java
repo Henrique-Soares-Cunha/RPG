@@ -22,19 +22,19 @@ public abstract class Monstros extends BasePersonagens {
     }
 
     public int soco(){
-        return this.ataque * Dados.D4();
+        return this.ataque * Dados.D4() / 2;
     }
     public int facada(){
-        return this.ataque * Dados.D6();
+        return this.ataque * Dados.D6() / 2;
     }
     public int tiro(){
-        return this.ataque * Dados.D8();
+        return this.ataque * Dados.D8() / 2;
     }
     public int raioLaser(){
-        return this.ataque * Dados.D10();
+        return this.ataque * Dados.D10() / 2;
     }
     public int instrumentoProfano(){
-        return this.ataque * Dados.Dpersonalizado(5,15);
+        return this.ataque * Dados.Dpersonalizado(5,15) / 2;
     }
 }
 

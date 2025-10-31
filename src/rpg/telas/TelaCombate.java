@@ -38,26 +38,40 @@ public class TelaCombate {
             String classeinimigo = inimigo.getClass().getSimpleName();
             switch (classeinimigo){
                 case "SoldadoDaDitadura":
-                    jogador.subtraiVida(inimigo.soco());
+                    System.out.println("SoldadoDaDitadura");
+                    jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
+                    break;
                 case "SargentoDaDitadura":
-                    jogador.subtraiVida(inimigo.facada());
+                    System.out.println("SargentoDaDitadura");
+                    System.out.println(inimigo.getAtaque());
+                    jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
+                    break;
                 case "CapitaoDaDitadura":
-                    jogador.subtraiVida(inimigo.tiro());
+                    System.out.println("CapitaoDaDitadura");
+                    jogador.subtraiVida(inimigo.tiro() - jogador.getDefesa());
+                    break;
                 default:
                     int d = Dados.D6();
+                    System.out.println("Defaut da Ditadura");
                     switch (d){
                         case 1:
-                            jogador.subtraiVida(inimigo.soco());
+                            jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
+                            break;
                         case 2:
-                            jogador.subtraiVida(inimigo.facada());
+                            jogador.subtraiVida(inimigo.facada() - jogador.getDefesa());
+                            break;
                         case 3:
-                            jogador.subtraiVida(inimigo.tiro());
+                            jogador.subtraiVida(inimigo.tiro() - jogador.getDefesa());
+                            break;
                         case 4:
-                            jogador.subtraiVida(inimigo.tiro());
+                            jogador.subtraiVida(inimigo.tiro() - jogador.getDefesa());
+                            break;
                         case 5:
-                            jogador.subtraiVida(inimigo.raioLaser());
-                        case 6:
-                            jogador.subtraiVida(inimigo.instrumentoProfano());
+                            jogador.subtraiVida(inimigo.raioLaser() -  jogador.getDefesa());
+                            break;
+                        default:
+                            jogador.subtraiVida(inimigo.instrumentoProfano() - jogador.getDefesa());
+                            break;
                     }
             }
 
@@ -78,7 +92,7 @@ public class TelaCombate {
         switch (opcao) {
             case 1:
                 System.out.println("Você atacou " + inimigo.getNome() + "!");
-                inimigo.subtraiVida(Math.max(0, jogador.getAtaque()));
+                inimigo.subtraiVida(Math.max(0, (int)(jogador.getAtaque() * Dados.D4() / 1.5)));
                 break;
             case 2:
                 System.out.println("Você tenta esquivar do próximo ataque...");

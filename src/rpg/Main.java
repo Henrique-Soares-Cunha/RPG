@@ -78,9 +78,7 @@ public class Main {
             //a1p1.lerArquivo();
 
             TelaJogo.ChamarTela(heroi);
-            if (heroi.getPontosVida() == 0){
-
-            }
+            if (heroi.getPontosVida() == 0) return;
 
 
         } catch (Exception e) {
