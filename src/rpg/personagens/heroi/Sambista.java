@@ -15,7 +15,7 @@ public class Sambista extends BasePersonagens {
     }
 
     /** Habilidade: Surdo Viciante, aumenta a própria defesa
-     @param inimigo
+     *@param inimigo
      */
 
     public void habilidadeEspecial(BasePersonagens inimigo) throws Exception {

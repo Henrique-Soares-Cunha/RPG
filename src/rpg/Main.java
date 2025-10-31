@@ -2,6 +2,7 @@ package rpg;
 
 import rpg.itens.Inventario;
 import rpg.itens.Itens;
+import rpg.personagens.heroi.Deejay;
 import rpg.personagens.heroi.Sambista;
 import rpg.personagens.heroi.PopStar;
 import rpg.personagens.heroi.Metaleiro;
@@ -24,40 +25,51 @@ public class Main {
             Narracao narracao = new Narracao();
             narracao.tocarNarracao(); // toca a voz
 
-             // mostra o texto da história (letra por letra)
+            LeitorDeArquivosTxt introdução = new LeitorDeArquivosTxt("Introdução");
+            introdução.lerArquivo();
 
             Scanner input = new Scanner(System.in);
             int o;
             System.out.println("escolha sua classe:\n" +
                     "1-Deejay, 2-Funkeiro, 3-Gospeiro, 4-Jazzista, 5-Metaleiro, 6-Rapper, 7-Pop Star, 8-Roqueiro, 9-Sambista");
             o = input.nextInt();
+            System.out.println("Escolha um nome para seu persnagem:" );
             switch (o){
                 case 1:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 2:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 3:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 4:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 5:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 6:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 7:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 8:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 case 9:
-
+                    String nome = input.nextLine();
+                    Deejay heroi = new Deejay(nome);
                     break;
                 default:
                     System.out.println("Classe invalida");
