@@ -1,5 +1,6 @@
 package rpg.telas;
 
+import rpg.Dados;
 import rpg.itens.Itens;
 import rpg.personagens.BasePersonagens;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class TelaJogo {
             Scanner sc = new Scanner(System.in);
             System.out.println("----------------------------------------------");
             System.out.println("voce o " + jogador.getNome() + "tem as opções");
-            System.out.println("1-Explorar 2-fugir 3-usar item 4-tomar decisão");
+            System.out.println("1-Explorar 2-usar item 3-tomar decisão");
             System.out.println("----------------------------------------------");
             int opcao = sc.nextInt();
             TelaCombate armadilha = new TelaCombate(jogador, new SargentoDaDitadura("matheus", 1,1,1,1));
@@ -31,7 +32,11 @@ public class TelaJogo {
                         System.out.println("Você achou o escudo armonica");
                         jogador.getInventario().adicionarItem(new Itens("escudo armonico", "um escudo superefetivo contra o regime" , 1, "almentar defesa"));
                     }
-
+                case 2:
+                    int b = Dados.Dpersonalizado(0, 10);
+            }
+            if (jogador.getPontosVida() == 0 ){
+                return;
             }
         }
     }

@@ -32,6 +32,7 @@ public class Main {
             LeitorDeArquivosTxt a3p2 = new LeitorDeArquivosTxt("A3P2.txt");
             LeitorDeArquivosTxt a4p1 = new LeitorDeArquivosTxt("A4P1.txt");
             LeitorDeArquivosTxt a4p2 = new LeitorDeArquivosTxt("A4P2.txt");
+            LeitorDeArquivosTxt a5 = new LeitorDeArquivosTxt("A5Final.txt");
             introdução.lerArquivo();*/
 
             Scanner input = new Scanner(System.in);
@@ -77,6 +78,9 @@ public class Main {
             //a1p1.lerArquivo();
 
             TelaJogo.ChamarTela(heroi);
+            if (heroi.getPontosVida() == 0){
+
+            }
 
 
         } catch (Exception e) {

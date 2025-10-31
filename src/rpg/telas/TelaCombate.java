@@ -1,16 +1,20 @@
 package rpg.telas;
 
 import java.util.Scanner;
+
+import rpg.Dados;
 import rpg.personagens.BasePersonagens;
 import rpg.itens.Inventario;
+import rpg.personagens.inimigos.Monstros;
+import rpg.personagens.inimigos.SoldadoDaDitadura;
 
 public class TelaCombate {
 
     private BasePersonagens jogador;
-    private BasePersonagens inimigo;
+    private Monstros inimigo;
     private Scanner input;
 
-    public TelaCombate(BasePersonagens jogador, BasePersonagens inimigo) {
+    public TelaCombate(BasePersonagens jogador, Monstros inimigo) {
         this.jogador = jogador;
         this.inimigo = inimigo;
         this.input = new Scanner(System.in);
@@ -25,11 +29,37 @@ public class TelaCombate {
             System.out.println("3 - Fugir");
             System.out.println("4 - Mostrar inventario");
             System.out.println("5 - Usar item");
+            System.out.println("6 - Ataque especial");
 
 
             System.out.print("\nDigite sua escolha: ");
             int opcao = input.nextInt();
             executarAcao(opcao);
+            String classeinimigo = inimigo.getClass().getSimpleName();
+            switch (classeinimigo){
+                case "SoldadoDaDitadura":
+                    jogador.subtraiVida(inimigo.soco());
+                case "SargentoDaDitadura":
+                    jogador.subtraiVida(inimigo.facada());
+                case "CapitaoDaDitadura":
+                    jogador.subtraiVida(inimigo.tiro());
+                default:
+                    int d = Dados.D6();
+                    switch (d){
+                        case 1:
+                            jogador.subtraiVida(inimigo.soco());
+                        case 2:
+                            jogador.subtraiVida(inimigo.facada());
+                        case 3:
+                            jogador.subtraiVida(inimigo.tiro());
+                        case 4:
+                            jogador.subtraiVida(inimigo.tiro());
+                        case 5:
+                            jogador.subtraiVida(inimigo.raioLaser());
+                        case 6:
+                            jogador.subtraiVida(inimigo.instrumentoProfano());
+                    }
+            }
 
             if (opcao == 3) break; // fugiu
             Thread.sleep(1000); // pausa pra dar ritmo
@@ -63,6 +93,9 @@ public class TelaCombate {
             case 5:
                 System.out.println("Voce usou o item: ");
                 break;
+            case 6:
+                System.out.println("Voce usou o ataque especial");
+                jogador.habilidadeEspecial(inimigo);
             default:
                 System.out.println("Opção inválida!");
         }
