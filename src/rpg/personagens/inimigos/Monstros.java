@@ -5,8 +5,8 @@ import rpg.Dados;
 
 public abstract class Monstros extends BasePersonagens {
 
-    public Monstros(String nome) throws Exception {
-        super(nome, 5, 3, 2, 1);
+    public Monstros(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
+        super(nome, pontosVida, ataque, defesa, nivel);
 
         try{
             this.setNome(nome);

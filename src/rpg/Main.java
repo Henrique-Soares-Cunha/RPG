@@ -2,6 +2,9 @@ package rpg;
 
 import rpg.itens.Inventario;
 import rpg.itens.Itens;
+import rpg.personagens.heroi.Sambista;
+import rpg.personagens.heroi.PopStar;
+import rpg.personagens.heroi.Metaleiro;
 import rpg.sons.narracao.Narracao;
 import rpg.LeitorDeArquivosTxt;
 import rpg.personagens.BasePersonagens;
@@ -12,6 +15,10 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    private static void printStatus(String titulo, BasePersonagens p) {
+        System.out.printf("%s -> %s | Vida=%d, ATK=%d, DEF=%d, Nível=%d%n",
+                titulo, p.getNome(), p.getPontosVida(), p.getAtaque(), p.getDefesa(), p.getNivel());
+    }
     public static void main(String[] args) {
         try {
             Narracao narracao = new Narracao();
@@ -61,7 +68,7 @@ public class Main {
 
             // 3️⃣ Cria personagens (usando sua BasePersonagens e SoldadoDaDitadura)
             BasePersonagens heroi = new BasePersonagens("DeeJay", 100, 20, 10, 1) {};
-            BasePersonagens inimigo = new SoldadoDaDitadura("Soldado da Ditadura");
+            BasePersonagens inimigo = new SoldadoDaDitadura("Soldado da Ditadura", 50, 3, 4, 1);
 
             // 4️⃣ Inicia a tela de combate no terminal
             TelaCombate tela = new TelaCombate(heroi, inimigo);
@@ -98,6 +105,46 @@ public class Main {
             System.out.println("Inventário clonado:");
             copia.mostrarInventario();
 
+            BasePersonagens ini = new SoldadoDaDitadura("Soldado da Ditadura", 80, 12, 8, 1);
+
+            // ======= METALEIRO =======
+            Metaleiro metaleiro = new Metaleiro("Metaleiro", 70, 15, 6, 1);
+            System.out.println("\n=== Teste: Habilidade do Metaleiro ===");
+            printStatus("Antes (Herói)", metaleiro);
+            printStatus("Antes (Inimigo)", inimigo);
+
+            metaleiro.habilidadeEspecial(inimigo); // causa dano (D12+D8) e perde vida (metade do D8)
+
+            printStatus("Depois (Herói)", metaleiro);
+            printStatus("Depois (Inimigo)", inimigo);
+
+            // Reinicia o inimigo para o próximo teste
+            ini = new SoldadoDaDitadura("Soldado da Ditadura", 80, 12, 8, 1);
+
+            // ======= POP STAR =======
+            PopStar pop = new PopStar("Pop Star", 60, 10, 7, 1);
+            System.out.println("\n=== Teste: Habilidade da PopStar ===");
+            printStatus("Antes (Herói)", pop);
+            printStatus("Antes (Inimigo)", inimigo);
+
+            pop.habilidadeEspecial(inimigo); // dano leve + debuff de DEF (D4) no inimigo
+
+            printStatus("Depois (Herói)", pop);
+            printStatus("Depois (Inimigo)", inimigo);
+
+            // Reinicia o inimigo para o próximo teste
+            ini = new SoldadoDaDitadura("Soldado da Ditadura", 80, 12, 8, 1);
+
+            // ======= SAMBISTA =======
+            Sambista sambista = new Sambista("Sambista", 65, 9, 9, 1);
+            System.out.println("\n=== Teste: Habilidade do Sambista ===");
+            printStatus("Antes (Herói)", sambista);
+            printStatus("Antes (Inimigo)", inimigo);
+
+            sambista.habilidadeEspecial(sambista);
+
+            printStatus("Depois (Herói)", sambista);
+            printStatus("Depois (Inimigo)", inimigo);
 
 
         } catch (Exception e) {

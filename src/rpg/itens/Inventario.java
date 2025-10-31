@@ -3,7 +3,7 @@ package rpg.itens;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventario {
+public class Inventario implements Cloneable {
     private ArrayList <Itens> itens;
     private final int capacidadeMaxima;
     
