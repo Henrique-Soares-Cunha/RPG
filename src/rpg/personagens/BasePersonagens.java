@@ -139,7 +139,7 @@ public abstract class BasePersonagens {
 
 
     public int subtraiVida (int ataque) throws Exception{
-        if (ataque <= 0) throw new Exception ("Valor de dano invalido");
+        if (ataque < 0) throw new Exception ("Valor de dano invalido");
         this.pontosVida -= ataque;
         if (this.pontosVida < 0) this.pontosVida = 0;
         return this.pontosVida;

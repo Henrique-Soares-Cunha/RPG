@@ -19,7 +19,6 @@ public class TelaCombate {
     public void exibirTelaCombate() throws Exception {
         while (jogador.getPontosVida() > 0 && inimigo.getPontosVida() > 0) {
             exibirStatus();
-
             System.out.println("\n=== ESCOLHA SUA AÇÃO ===");
             System.out.println("1 - Atacar");
             System.out.println("2 - Esquivar");
@@ -49,7 +48,7 @@ public class TelaCombate {
         switch (opcao) {
             case 1:
                 System.out.println("Você atacou " + inimigo.getNome() + "!");
-                inimigo.setPontosVida(Math.max(0, inimigo.getPontosVida() - jogador.getAtaque()));
+                inimigo.subtraiVida(Math.max(0, jogador.getAtaque()));
                 break;
             case 2:
                 System.out.println("Você tenta esquivar do próximo ataque...");
