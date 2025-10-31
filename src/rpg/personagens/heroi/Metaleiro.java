@@ -9,8 +9,8 @@ public class Metaleiro extends BasePersonagens {
     public Metaleiro(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
         this.setNome(nome);
-        this.setPontosVida(18);
-        this.setAtaque(1);
+        this.setPontosVida(13);
+        this.setAtaque(3);
         this.setDefesa(1);
         this.setNivel(1);
     }
@@ -27,9 +27,11 @@ public class Metaleiro extends BasePersonagens {
         int danoD10 = Dados.D10();
         int danoTotal = danoD12 + danoD8;
 
+        System.out.println (danoTotal);
         inimigo.subtraiVida(danoTotal);
 
         int danoReverso = danoD10 / 2;
+        System.out.println (danoReverso);
         if (danoReverso < 1) danoReverso = 1;
         this.subtraiVida(danoReverso);
 

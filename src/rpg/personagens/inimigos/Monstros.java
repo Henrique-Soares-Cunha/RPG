@@ -22,10 +22,14 @@ public abstract class Monstros extends BasePersonagens {
     }
 
     public int soco(){
-        return this.ataque * Dados.D4() / 2;
+        int dano =this.ataque * Dados.D4() / 2;
+        System.out.println("Dano: " + dano);
+        return dano;
     }
     public int facada(){
-        return this.ataque * Dados.D6() / 2;
+        int dano =this.ataque * Dados.D6() / 2;
+        System.out.println("Dano: " + dano);
+        return dano;
     }
     public int tiro(){
         return this.ataque * Dados.D8() / 2;

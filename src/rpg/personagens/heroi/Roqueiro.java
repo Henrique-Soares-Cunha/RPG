@@ -30,7 +30,7 @@ public class Roqueiro extends BasePersonagens {
 
         if (crit)
             System.out.println("CRITICO! Dano em dobro!");
-        System.out.println(dano + " de dano causado " + " em " + inimigo.getNome() + ".");
+        System.out.println(dano + " de dano causado em " + inimigo.getNome() + ".");
         System.out.println("Vida atual de: " + inimigo.getNome() + ": " + inimigo.getPontosVida());
 
     }

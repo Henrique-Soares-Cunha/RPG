@@ -1,10 +1,9 @@
 package rpg.telas;
 
-import rpg.Dados;
-import rpg.itens.Itens;
-import rpg.personagens.BasePersonagens;
 import java.util.Scanner;
 import rpg.Jogo;
+import rpg.itens.Itens;
+import rpg.personagens.BasePersonagens;
 import rpg.personagens.inimigos.*;
 
 public class TelaJogo {
@@ -39,8 +38,7 @@ public class TelaJogo {
                             jogador.getInventario().adicionarItem(new Itens("Guitarra Harmônica", "uma guitarra superefetivo contra o regime com som devastador" , 1, "dano"));
                             break;
                         default:
-
-
+                            break;
                     }
                     break;
                 case 2:

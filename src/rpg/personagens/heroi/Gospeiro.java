@@ -11,16 +11,16 @@ public class Gospeiro extends BasePersonagens {
         this.setNome(nome);
         this.setPontosVida(8);
         this.setAtaque(2);
-        this.setDefesa(1);
+        this.setDefesa(2);
         this.setNivel(1);
     }
 
     public void habilidadeEspecial(BasePersonagens inimigo) throws Exception{
         System.out.println("Gospeiro conjura a luz divina");
         int cura = 5 + Dados.D12();
-        if (cura > 8) cura = 8;
+        if (cura > this.vidaMaxima - this.pontosVida) cura = this.vidaMaxima - this.pontosVida;
 
-        this.addVida(cura);
-        System.out.println("O " + this.getNome() + "curou " + cura + " de vida.");
+        this.pontosVida = this.addVida(cura);
+        System.out.println("O " + this.getNome() + " curou " + cura + " de vida.");
     }
 }

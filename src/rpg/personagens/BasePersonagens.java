@@ -56,10 +56,11 @@ public abstract class BasePersonagens {
     }
     public void setPontosVida(int pontosVida)throws Exception{
         if (pontosVida <= 0){
-            this.pontosVida = pontosVida;
-            this.vidaMaxima = pontosVida;
+            this.pontosVida = 0;
+            this.vidaMaxima = 0;
             throw new Exception("O personagem"+this.nome+"morreu");}
         this.pontosVida = pontosVida;
+        this.vidaMaxima = pontosVida;
     }
     public void setAtaque(int ataque)throws Exception{
         if (ataque <= 0){throw new Exception("Ataque 0");}
@@ -92,7 +93,7 @@ public abstract class BasePersonagens {
     /**Re arrumar atributos
      * Ao final do combate os atributos voltam ao padrão
      */
-    public void FimCombate(){
+    public void FimAto(){
         this.ataque = this.ataquePadrao;
         this.defesa = this.defesaPadrao;
         this.pontosVida = this.vidaMaxima;
@@ -101,23 +102,19 @@ public abstract class BasePersonagens {
 
     //manipular atributos int
     public int addVida(int vida){
-        if (-this.pontosVida <= vida){
-            this.pontosVida = 0;
-            return 0;
-        }
-        this.pontosVida += vida;
+        this.pontosVida = this.pontosVida + vida;
         return this.pontosVida;
     }
     public int addNivel(){
         return ++this.nivel;
     }
-    public int addDefesa(int defesa) throws Exception{
+
+    public void addDefesa(int defesa) throws Exception{
         if (defesa <= 0) throw new Exception ("Valor invalido para defesa");
         this.defesa += defesa;
-        return this.defesa;
     }
-    public int reducaoDefesa (int defesa) throws Exception{
-        if (defesa <= 0) throw new Exception ("Valor invalido para reducao da defesa");
+    public int reducaoDefesa (int defesa){
+        if (defesa <= 0) return this.defesa += defesa;
         this.defesa -= defesa;
         if (this.defesa < 0) this.defesa = 0;
         return this.defesa;

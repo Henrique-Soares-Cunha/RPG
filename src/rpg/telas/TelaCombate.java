@@ -1,14 +1,11 @@
 package rpg.telas;
 
 import java.util.Scanner;
-
 import rpg.Dados;
-import rpg.itens.Itens;
-import rpg.personagens.BasePersonagens;
-import rpg.itens.Inventario;
-import rpg.personagens.inimigos.Monstros;
-import rpg.personagens.inimigos.SoldadoDaDitadura;
 import rpg.Jogo;
+import rpg.itens.*;
+import rpg.personagens.BasePersonagens;
+import rpg.personagens.inimigos.Monstros;
 
 public class TelaCombate {
 
@@ -36,19 +33,20 @@ public class TelaCombate {
             System.out.print("\nDigite sua escolha: ");
             int opcao = input.nextInt();
             executarAcao(opcao);
+            if (inimigo.getPontosVida() <= 0) {
+                System.out.println("\n Você venceu o inimigo!");
+                break;
+            }
             String classeinimigo = inimigo.getClass().getSimpleName();
             switch (classeinimigo){
                 case "SoldadoDaDitadura":
-                    System.out.println("SoldadoDaDitadura");
                     jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
                     break;
                 case "SargentoDaDitadura":
-                    System.out.println("SargentoDaDitadura");
                     System.out.println(inimigo.getAtaque());
                     jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
                     break;
                 case "CapitaoDaDitadura":
-                    System.out.println("CapitaoDaDitadura");
                     jogador.subtraiVida(inimigo.tiro() - jogador.getDefesa());
                     break;
                 default:
@@ -75,18 +73,20 @@ public class TelaCombate {
                             break;
                     }
             }
-
-            if (opcao == 2) break; // fugiu
+            if (jogador.getPontosVida() <= 0) {
+                System.out.println("\n Você foi derrotado!");
+                break;
+            }
+            if (opcao == 2)  {
+                if (Jogo.fugir(jogador) == 0){
+                    System.out.println("\nVocê fugiu da batalha.");
+                    break; // fugiu
+                }
+            }
             Thread.sleep(1000); // pausa pra dar ritmo
         }
 
-        if (jogador.getPontosVida() <= 0) {
-            System.out.println("\n Você foi derrotado!");
-        } else if (inimigo.getPontosVida() <= 0) {
-            System.out.println("\n Você venceu o inimigo!");
-        } else {
-            System.out.println("\nVocê fugiu da batalha.");
-        }
+
     }
 
     private void executarAcao(int opcao) throws Exception {
@@ -110,6 +110,7 @@ public class TelaCombate {
             case 5:
                 System.out.println("Voce usou o ataque especial");
                 jogador.habilidadeEspecial(inimigo);
+                break;
             default:
                 System.out.println("Opção inválida!");
         }

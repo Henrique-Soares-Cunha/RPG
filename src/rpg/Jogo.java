@@ -1,12 +1,8 @@
 package rpg;
 
-import rpg.Dados;
-import rpg.personagens.BasePersonagens;
-import rpg.itens.Inventario;
-import rpg.itens.Itens;
-
-import java.util.List;
 import java.util.Scanner;
+import rpg.itens.Itens;
+import rpg.personagens.BasePersonagens;
 
 public class Jogo {
     private static final Scanner scanner = new Scanner(System.in);
@@ -86,18 +82,15 @@ public class Jogo {
 
         System.out.println("Item não encontrado no inventário!");
     }
-
-
-
-    public static void fugir(BasePersonagens personagem) throws Exception{
+    public static int fugir(BasePersonagens personagem){
         int valor = Dados.D20();
         if (valor <= 14){
-            System.out.println("Você falhou em fugir e tomou um ataque de oportunidade");
+            System.out.println("você falhou em fugir e tomou um ataque de oportunidade");
             personagem.subtraiVida((int) (Dados.D4()));
+            return 1;
         }
-        else{
-            System.out.println("Voce fugiu");
-        }
+        System.out.println("Voce fugiu");
+        return 0;
     }
     public static boolean decisao(){
         int valor = scanner.nextInt();

@@ -22,10 +22,10 @@ public class Funkeiro extends BasePersonagens {
     public void habilidadeEspecial (BasePersonagens inimigo) throws Exception{
         System.out.println("Funkeiro manda o passinho mitico");
         int dano = this.getAtaque() * Dados.D8();
-        this.subtraiVida(dano);
+        inimigo.subtraiVida(dano);
 
         int buff = Dados.D4();
-        this.addAtaque(buff);
+        inimigo.addAtaque(buff);
         System.out.println ("Causou " + dano + "de dano ao " + inimigo.getNome() + "e ganhou " + buff + "de ataque");
 
     }

@@ -26,6 +26,8 @@ public class Jazzista extends BasePersonagens {
         }
         int dano = base + critico;
 
+        System.out.println("Dano: " + dano);
+
         inimigo.subtraiVida(dano);
 
         if (critico > 0){

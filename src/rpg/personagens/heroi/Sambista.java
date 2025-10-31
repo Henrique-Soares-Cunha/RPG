@@ -10,7 +10,7 @@ public class Sambista extends BasePersonagens {
         this.setNome(nome);
         this.setPontosVida(10);
         this.setAtaque(3);
-        this.setDefesa(2);
+        this.setDefesa(1);
         this.setNivel(1);
     }
 
