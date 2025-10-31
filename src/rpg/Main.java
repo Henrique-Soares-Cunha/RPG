@@ -37,10 +37,10 @@ public class Main {
 
             Scanner input = new Scanner(System.in);
             int o;
-            System.out.println("escolha sua classe:\n" +
+            System.out.println("escolha sua classe:" +
                     "1-Deejay, 2-Funkeiro, 3-Gospeiro, 4-Jazzista, 5-Metaleiro, 6-Rapper, 7-Pop Star, 8-Roqueiro, 9-Sambista");
             o = input.nextInt();
-            System.out.println("Escolha um nome para seu persnagem:" );
+            System.out.println("Escolha um nome para seu personagem:" );
             String nome = input.nextLine();
             BasePersonagens heroi = null;
             switch (o){

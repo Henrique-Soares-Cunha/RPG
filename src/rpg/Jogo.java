@@ -4,6 +4,8 @@ import rpg.Dados;
 import rpg.personagens.BasePersonagens;
 import rpg.itens.Inventario;
 import rpg.itens.Itens;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Jogo {
@@ -33,21 +35,43 @@ public class Jogo {
         }
         return 100;
     }
-    public static void usarItem(BasePersonagens personagem, Itens item){
-        for (int i = 0 ; i <= personagem.getInventario().listarItensOrdenados().size(); i++){
-            Itens atual =  personagem.getInventario().listarItensOrdenados().get(i);
+
+    public static void usarItem(BasePersonagens personagem, BasePersonagens inimigo, Itens item) throws Exception {
+        List<Itens> itens = personagem.getInventario().listarItensOrdenados();
+        boolean encontrado = false;
+
+        for (int i = 0; i < itens.size(); i++) {
+            Itens atual = itens.get(i);
+
             if (atual.getNome().equals(item.getNome())) {
+                encontrado = true;
+
+                int dano = Dados.D10() + Dados.D6();
+                inimigo.subtraiVida(dano);
+
+                System.out.println(personagem.getNome() + " usa a Guitarra Harmônica!");
+                System.out.println("Uma onda sonora corta o ar e atinge " + inimigo.getNome() + " causando " + dano + " de dano!");
+
+                // diminui quantidade
                 atual.setQuantidade(atual.getQuantidade() - 1);
-                return;
+                if (atual.getQuantidade() <= 0) {
+                    personagem.getInventario().removerItem(atual.getNome(), 1);
+                }
+                break;
             }
         }
-        System.out.println("Seu item não está no inventário");
+
+        if (!encontrado) {
+            System.out.println("Item não encontrado no inventário!");
+        }
     }
-    public static void fugir(BasePersonagens personagem){
+
+
+    public static void fugir(BasePersonagens personagem) throws Exception{
         int valor = Dados.D20();
         if (valor <= 14){
-            System.out.println("você falhou em fugir e tomou um ataque de oportunidade");
-            personagem.addVida((int) (Dados.D4()));
+            System.out.println("Você falhou em fugir e tomou um ataque de oportunidade");
+            personagem.subtraiVida((int) (Dados.D4()));
         }
         else{
             System.out.println("Voce fugiu");

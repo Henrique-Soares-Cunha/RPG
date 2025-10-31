@@ -13,8 +13,8 @@ public class TelaJogo {
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("----------------------------------------------");
-            System.out.println("voce o " + jogador.getNome() + "tem as opções");
-            System.out.println("1-Explorar 2-usar item 3-tomar decisão");
+            System.out.println("Voce " + jogador.getNome() + "tem as opções");
+            System.out.println("1-Explorar 2-Usar item 3-Tomar decisão 4-Mostrar inventario");
             System.out.println("----------------------------------------------");
             int opcao = sc.nextInt();
             switch (opcao) {
@@ -42,12 +42,44 @@ public class TelaJogo {
 
 
                     }
+                    break;
                 case 2:
-                    int b = Dados.Dpersonalizado(0, 10);
+                    var inv = jogador.getInventario();
+                    var lista = inv.listarItensOrdenados();
+
+                    if (lista.isEmpty()) {
+                        System.out.println("Seu inventário está vazio.");
+                        break;
+                    }
+                    System.out.println("Escolha um item para usar:");
+                    for (int i = 0; i < lista.size(); i++) {
+                        Itens it = lista.get(i);
+                        System.out.printf("%d) %s x%d — %s%n",
+                                (i + 1), it.getNome(), it.getQuantidade(), it.getDescricao());
+                    }
+
+                    System.out.print("Número do item: ");
+                    int numeroItem = sc.nextInt();
+
+                    if (numeroItem < 1 || numeroItem > lista.size()) {
+                        System.out.println("Índice inválido.");
+                        break;
+                    }
+
+                    Itens itemEscolhido = lista.get(numeroItem - 1);
+
+                    // 👇 Cria um inimigo temporário para testar o dano do item
+                    // (você pode trocar depois por um inimigo real do mapa)
+                    BasePersonagens inimigoTeste = new SoldadoDaDitadura("Soldado da Ditadura", 5, 5, 5, 5);
+
+                    // Chama o seu método que causa dano
+                    Jogo.usarItem(jogador, inimigoTeste, itemEscolhido);
+
+                    // Mostra o resultado do dano
+                    System.out.println("Vida do inimigo após o ataque: " + inimigoTeste.getPontosVida());
+                    break;
+                }
             }
-            if (jogador.getPontosVida() == 0 ){
-                return;
-            }
-        }
     }
 }
+

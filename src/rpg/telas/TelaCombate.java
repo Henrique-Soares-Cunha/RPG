@@ -7,6 +7,7 @@ import rpg.personagens.BasePersonagens;
 import rpg.itens.Inventario;
 import rpg.personagens.inimigos.Monstros;
 import rpg.personagens.inimigos.SoldadoDaDitadura;
+import rpg.Jogo;
 
 public class TelaCombate {
 
@@ -75,7 +76,7 @@ public class TelaCombate {
                     }
             }
 
-            if (opcao == 3) break; // fugiu
+            if (opcao == 2) break; // fugiu
             Thread.sleep(1000); // pausa pra dar ritmo
         }
 
@@ -95,19 +96,18 @@ public class TelaCombate {
                 inimigo.subtraiVida(Math.max(0, (int)(jogador.getAtaque() * Dados.D4() / 1.5)));
                 break;
             case 2:
-                System.out.println("Você tenta esquivar do próximo ataque...");
+                System.out.println("Você decide fugir da batalha...");
+                Jogo.fugir(jogador);
                 break;
             case 3:
-                System.out.println("Você decide fugir da batalha...");
-                break;
-            case 4:
                 System.out.println("Seu inventario: ");
                 jogador.getInventario().mostrarInventario();
                 break;
-            case 5:
+            case 4:
                 System.out.println("Voce usou o item: ");
+
                 break;
-            case 6:
+            case 5:
                 System.out.println("Voce usou o ataque especial");
                 jogador.habilidadeEspecial(inimigo);
             default:
