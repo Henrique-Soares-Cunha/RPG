@@ -31,6 +31,9 @@ public abstract class Monstros extends BasePersonagens {
         return this.ataque * Dados.D8();
     }
     public int raioLaser(){
+        return this.ataque * Dados.D10();
+    }
+    public int instrumentoProfano(){
         return this.ataque * Dados.Dpersonalizado(5,15);
     }
 }
