@@ -40,7 +40,7 @@ public class Main {
             System.out.println("Escolha sua classe:\n" +
                     "1-Deejay, 2-Funkeiro, 3-Gospeiro, 4-Jazzista, 5-Metaleiro, 6-Rapper, 7-Pop Star, 8-Roqueiro, 9-Sambista");
             o = input.nextInt();
-            System.out.println("Escolha um nome para seu persnagem: " );
+            System.out.println("Escolha um nome para seu personagem: " );
             input.nextLine(); //limpa o buffer
             String nome = input.nextLine();
             BasePersonagens heroi = null;

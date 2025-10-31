@@ -12,7 +12,7 @@ public class TelaJogo {
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("----------------------------------------------");
-            System.out.println("Voce " + jogador.getNome() + "tem as opções");
+            System.out.println("Voce " + jogador.getNome() + " tem as opções");
             System.out.println("1-Explorar 2-Usar item 3-Tomar decisão 4-Mostrar inventario");
             System.out.println("----------------------------------------------");
             int opcao = sc.nextInt();

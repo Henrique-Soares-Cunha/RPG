@@ -31,8 +31,9 @@ public class Jazzista extends BasePersonagens {
         inimigo.subtraiVida(dano);
 
         if (critico > 0){
-                System.out.println ("O ritmo foi muito contagiante para o " + inimigo.getNome() + "Bonus de dano: " + critico);
+                System.out.println ("O ritmo foi muito contagiante para o " + inimigo.getNome() + " Bonus de dano: " + critico);
             System.out.println("Dano total: " + dano);
+            System.out.println("Vida atual de: " + inimigo.getNome() + ": " + inimigo.getPontosVida());
         }
     }
 }

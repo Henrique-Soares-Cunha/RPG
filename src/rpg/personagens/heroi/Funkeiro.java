@@ -10,7 +10,7 @@ public class Funkeiro extends BasePersonagens {
         super(nome, pontosVida, ataque, defesa, nivel);
         this.setNome(nome);
         this.setPontosVida(13);
-        this.setAtaque(3);
+        this.setAtaque(2);
         this.setDefesa(3);
         this.setNivel(1);
     }
@@ -21,12 +21,12 @@ public class Funkeiro extends BasePersonagens {
      */
     public void habilidadeEspecial (BasePersonagens inimigo) throws Exception{
         System.out.println("Funkeiro manda o passinho mitico");
-        int dano = this.getAtaque() * Dados.D8();
+        int dano = this.getAtaque() * Dados.D6();
         inimigo.subtraiVida(dano);
 
         int buff = Dados.D4();
         inimigo.addAtaque(buff);
-        System.out.println ("Causou " + dano + "de dano ao " + inimigo.getNome() + "e ganhou " + buff + "de ataque");
+        System.out.println ("Causou " + dano + "de dano ao " + inimigo.getNome() + " e ganhou " + buff + " de ataque");
 
     }
 }
