@@ -8,19 +8,18 @@ import rpg.personagens.BasePersonagens;
 public class Rapper extends BasePersonagens {
     public Rapper(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
-        this.nome = nome;
-        this.pontosVida = 10;
-        this.ataque = 3;
-        this.defesa = 3;
-        this.nivel = 1;
+        this.setNome(nome);
+        this.setPontosVida(10);
+        this.setAtaque(3);
+        this.setDefesa(3);
+        this.setNivel(1);
     }
     public void habilidadeEspecial(BasePersonagens inimigo) throws Exception {
         System.out.println(" Rapper dispara a Visao da Rima!");
         int danoVerdadeiro = 8 + Dados.D10();
-        int novaVida = inimigo.getPontosVida() - danoVerdadeiro;
-        if (novaVida < 0)
-            novaVida = 0;
-        inimigo.setPontosVida(novaVida);
+
+        inimigo.subtraiVida(danoVerdadeiro);
         System.out.println("Dano verdadeiro: " + danoVerdadeiro + ".");
+        System.out.println("Vida atual de " + inimigo.getNome() + ":" + inimigo.getPontosVida());
     }
 }

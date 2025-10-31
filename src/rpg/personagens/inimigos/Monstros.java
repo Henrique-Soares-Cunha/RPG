@@ -21,8 +21,17 @@ public abstract class Monstros extends BasePersonagens {
 
     }
 
-    public int Soco(){
+    public int soco(){
         return this.ataque * Dados.D4();
+    }
+    public int facada(){
+        return this.ataque * Dados.D6();
+    }
+    public int tiro(){
+        return this.ataque * Dados.D8();
+    }
+    public int raioLaser(){
+        return this.ataque * Dados.Dpersonalizado(5,15);
     }
 }
 

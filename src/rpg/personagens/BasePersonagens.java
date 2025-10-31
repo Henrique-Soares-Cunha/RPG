@@ -111,13 +111,42 @@ public abstract class BasePersonagens {
     public int addNivel(){
         return ++this.nivel;
     }
-    public int addDefesa(int defesa){
-         this.defesa += defesa;
-         return this.defesa;
+    public int addDefesa(int defesa) throws Exception{
+        if (defesa <= 0) throw new Exception ("Valor invalido para defesa");
+        this.defesa += defesa;
+        return this.defesa;
     }
-    public int addAtaque(int ataque){
-        this.ataque += ataque;
+    public int reducaoDefesa (int defesa) throws Exception{
+        if (defesa <= 0) throw new Exception ("Valor invalido para reducao da defesa");
+        this.defesa -= defesa;
+        if (this.defesa < 0) this.defesa = 0;
+        return this.defesa;
+    }
+
+    public int addAtaque(int aumento) throws Exception{
+        if (aumento <= 0) throw new Exception("Valor invalido para aumento da defesa");
+        this.ataque += aumento;
         return this.ataque;
+    }
+
+    public int reducaoAtaque (int reducao) throws Exception{
+        if (reducao <= 0) throw new Exception ("Valor invalido para reducao do ataque");
+        this.ataque -= reducao;
+        if (this.ataque < 0) this.ataque = 0;
+        return this.ataque;
+    }
+
+
+
+    public int subtraiVida (int ataque) throws Exception{
+        if (ataque <= 0) throw new Exception ("Valor de dano invalido");
+        this.pontosVida -= ataque;
+        if (this.pontosVida < 0) this.pontosVida = 0;
+        return this.pontosVida;
+    }
+
+    public void habilidadeEspecial (BasePersonagens inimigo) throws Exception{
+
     }
 }
 

@@ -8,11 +8,11 @@ import rpg.personagens.BasePersonagens;
 public class Metaleiro extends BasePersonagens {
     public Metaleiro(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
-        this.nome = nome;
-        this.pontosVida = 18;
-        this.ataque = 1;
-        this.defesa = 1;
-        this.nivel = 1;
+        this.setNome(nome);
+        this.setPontosVida(18);
+        this.setAtaque(1);
+        this.setDefesa(1);
+        this.setNivel(1);
     }
 
     /**Metaleiro tem bastante vida pois ira ter a habilidade Guitarra maligna, onde vai dar bastante dano mas perder uma parte da vida
@@ -27,16 +27,13 @@ public class Metaleiro extends BasePersonagens {
         int danoD10 = Dados.D10();
         int danoTotal = danoD12 + danoD8;
 
-        int novaVidaInimigo = inimigo.getPontosVida() - danoTotal;
-        if (novaVidaInimigo < 0) novaVidaInimigo = 0;
-        inimigo.setPontosVida(novaVidaInimigo);
+        inimigo.subtraiVida(danoTotal);
 
         int danoReverso = danoD10 / 2;
-        int novaVidaMetaleiro = this.getPontosVida() - danoReverso;
-        if (novaVidaMetaleiro < 1) novaVidaMetaleiro = 1;
-        this.setPontosVida(novaVidaMetaleiro);
+        if (danoReverso < 1) danoReverso = 1;
+        this.subtraiVida(danoReverso);
 
-        System.out.println ("Dano causado: " + danoTotal + " (" + danoD12 + "+" + danoD8 + ")");
+        System.out.println ("Dano causado ao " + inimigo.getNome() + ": " + danoTotal + " (" + danoD12 + "+" + danoD8 + ")");
         System.out.println ("A guitarra maligna fez o metaleiro perder " + danoReverso + " de vida");
 
     }

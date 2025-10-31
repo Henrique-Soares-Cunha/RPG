@@ -7,11 +7,11 @@ import rpg.personagens.BasePersonagens;
 public class Jazzista extends BasePersonagens {
     public Jazzista(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
-        this.nome = nome;
-        this.pontosVida = 10 ;
-        this.ataque = 3;
-        this.defesa = 2;
-        this.nivel = 1;
+        this.setNome(nome);
+        this.setPontosVida(10);
+        this.setAtaque(3);
+        this.setDefesa(2);
+        this.setNivel(1);
     }
 
     /** Esse metodo implementa a habilidade especial do jazzista: ritmo contagiante, um dano crítico
@@ -26,9 +26,7 @@ public class Jazzista extends BasePersonagens {
         }
         int dano = base + critico;
 
-        int novaVida = inimigo.getPontosVida() - dano;
-        if (novaVida < 0) novaVida = 0;
-        inimigo.setPontosVida(novaVida);
+        inimigo.subtraiVida(dano);
 
         if (critico > 0){
                 System.out.println ("O ritmo foi muito contagiante para o " + inimigo.getNome() + "Bonus de dano: " + critico);

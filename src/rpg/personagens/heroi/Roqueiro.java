@@ -7,11 +7,11 @@ import rpg.personagens.BasePersonagens;
 public class Roqueiro extends BasePersonagens {
     public Roqueiro(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
-        this.nome = nome;
-        this.pontosVida = 12;
-        this.ataque = 4;
-        this.defesa = 2;
-        this.nivel = 1;
+        this.setNome(nome);
+        this.setPontosVida(12);
+        this.setAtaque(4);
+        this.setDefesa(2);
+        this.setNivel(1);
     }
 
     /**
@@ -26,14 +26,13 @@ public class Roqueiro extends BasePersonagens {
         if (crit)
             dano = base * 2;
 
-        int novaVida = inimigo.getPontosVida() - dano;
-        if (novaVida < 0)
-            novaVida = 0;
-        inimigo.setPontosVida(novaVida);
+        inimigo.subtraiVida(dano);
 
         if (crit)
             System.out.println("CRITICO! Dano em dobro!");
-        System.out.println("Dano: " + dano + ".");
+        System.out.println(dano + " de dano causado " + " em " + inimigo.getNome() + ".");
+        System.out.println("Vida atual de: " + inimigo.getNome() + ": " + inimigo.getPontosVida());
+
     }
 
 }

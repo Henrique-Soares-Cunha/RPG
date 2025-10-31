@@ -27,7 +27,7 @@ public class Jogo {
             return Dados.Dpersonalizado(6,8);
         }
         if (dado >= 10 && dado <= 12){
-            System.out.println("Voce encontrou um ótimo item item");
+            System.out.println("Voce encontrou um ótimo item");
             return Dados.Dpersonalizado(9,12);
         }
         return 100;
