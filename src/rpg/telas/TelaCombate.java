@@ -3,6 +3,7 @@ package rpg.telas;
 import java.util.Scanner;
 
 import rpg.Dados;
+import rpg.itens.Itens;
 import rpg.personagens.BasePersonagens;
 import rpg.itens.Inventario;
 import rpg.personagens.inimigos.Monstros;
@@ -26,11 +27,10 @@ public class TelaCombate {
             exibirStatus();
             System.out.println("\n=== ESCOLHA SUA AÇÃO ===");
             System.out.println("1 - Atacar");
-            System.out.println("2 - Esquivar");
-            System.out.println("3 - Fugir");
-            System.out.println("4 - Mostrar inventario");
-            System.out.println("5 - Usar item");
-            System.out.println("6 - Ataque especial");
+            System.out.println("2 - Fugir");
+            System.out.println("3 - Mostrar Inventario");
+            System.out.println("4 - Usar item");
+            System.out.println("5 - Ataque Especial");
 
 
             System.out.print("\nDigite sua escolha: ");
@@ -53,7 +53,7 @@ public class TelaCombate {
                     break;
                 default:
                     int d = Dados.D6();
-                    System.out.println("Defaut da Ditadura");
+                    System.out.println("Default da Ditadura");
                     switch (d){
                         case 1:
                             jogador.subtraiVida(inimigo.soco() - jogador.getDefesa());
@@ -105,7 +105,7 @@ public class TelaCombate {
                 break;
             case 4:
                 System.out.println("Voce usou o item: ");
-
+                usarItemEmCombate();
                 break;
             case 5:
                 System.out.println("Voce usou o ataque especial");
@@ -114,6 +114,34 @@ public class TelaCombate {
                 System.out.println("Opção inválida!");
         }
     }
+
+    private void usarItemEmCombate() throws Exception {
+        var inv = jogador.getInventario();
+        var lista = inv.listarItensOrdenados();
+
+        if (lista.isEmpty()) {
+            System.out.println("Seu inventário está vazio.");
+            return;
+        }
+
+        System.out.println("Escolha um item para usar:");
+        for (int i = 0; i < lista.size(); i++) {
+            var it = lista.get(i);
+            System.out.printf("%d) %s x%d — %s (%s)%n",
+                    (i + 1), it.getNome(), it.getQuantidade(), it.getDescricao(), it.getEfeito());
+        }
+
+        System.out.print("Número do item: ");
+        int idx = input.nextInt();
+        if (idx < 1 || idx > lista.size()) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        Itens itemEscolhido = lista.get(idx - 1);
+        Jogo.usarItem(jogador, inimigo, itemEscolhido);
+    }
+
 
     private void exibirStatus() {
         System.out.println("=========================================");

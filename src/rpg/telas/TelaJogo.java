@@ -31,12 +31,12 @@ public class TelaJogo {
                             arapuca.exibirTelaCombate();
                             break;
                         case 3:
-                            System.out.println("Você achou o escudo armonica");
-                            jogador.getInventario().adicionarItem(new Itens("escudo armonico", "um escudo superefetivo contra o regime" , 1, "almentar defesa"));
+                            System.out.println("Você achou o Escudo Harmônico");
+                            jogador.getInventario().adicionarItem(new Itens("Escudo Harmônico", "Um escudo superefetivo contra o regime", 1, "defesa"));
                             break;
                         case 4:
-                            System.out.println("Você achou o escudo armonica");
-                            jogador.getInventario().adicionarItem(new Itens("guitarra armonico", "uma guitarra superefetivo contra o regime" , 1, "almentar ataque"));
+                            System.out.println("Você achou a Guitarra Harmonica");
+                            jogador.getInventario().adicionarItem(new Itens("Guitarra Harmônica", "uma guitarra superefetivo contra o regime com som devastador" , 1, "dano"));
                             break;
                         default:
 
@@ -68,15 +68,16 @@ public class TelaJogo {
 
                     Itens itemEscolhido = lista.get(numeroItem - 1);
 
-                    // 👇 Cria um inimigo temporário para testar o dano do item
-                    // (você pode trocar depois por um inimigo real do mapa)
-                    BasePersonagens inimigoTeste = new SoldadoDaDitadura("Soldado da Ditadura", 5, 5, 5, 5);
-
-                    // Chama o seu método que causa dano
-                    Jogo.usarItem(jogador, inimigoTeste, itemEscolhido);
-
-                    // Mostra o resultado do dano
-                    System.out.println("Vida do inimigo após o ataque: " + inimigoTeste.getPontosVida());
+                    if ("dano".equalsIgnoreCase(itemEscolhido.getEfeito())) {
+                        System.out.println("Itens de dano só podem ser usados em combate.");
+                    } else {
+                        Jogo.usarItem(jogador, null, itemEscolhido); // buffs/cura
+                    }
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    jogador.getInventario().mostrarInventario();
                     break;
                 }
             }

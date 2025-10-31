@@ -37,34 +37,56 @@ public class Jogo {
     }
 
     public static void usarItem(BasePersonagens personagem, BasePersonagens inimigo, Itens item) throws Exception {
-        List<Itens> itens = personagem.getInventario().listarItensOrdenados();
-        boolean encontrado = false;
+        var itens = personagem.getInventario().listarItensOrdenados();
+        for (Itens atual : itens) {
+            if (!atual.getNome().equalsIgnoreCase(item.getNome())) continue;
 
-        for (int i = 0; i < itens.size(); i++) {
-            Itens atual = itens.get(i);
+            String efeito = atual.getEfeito() == null ? "" : atual.getEfeito().toLowerCase().trim();
 
-            if (atual.getNome().equals(item.getNome())) {
-                encontrado = true;
-
-                int dano = Dados.D10() + Dados.D6();
-                inimigo.subtraiVida(dano);
-
-                System.out.println(personagem.getNome() + " usa a Guitarra Harmônica!");
-                System.out.println("Uma onda sonora corta o ar e atinge " + inimigo.getNome() + " causando " + dano + " de dano!");
-
-                // diminui quantidade
-                atual.setQuantidade(atual.getQuantidade() - 1);
-                if (atual.getQuantidade() <= 0) {
-                    personagem.getInventario().removerItem(atual.getNome(), 1);
+            switch (efeito) {
+                case "defesa": {
+                    int buff = Dados.D4();
+                    personagem.addDefesa(buff);
+                    System.out.println(personagem.getNome() + " usa " + atual.getNome() + " e ganha +" + buff + " de DEF.");
+                    break;
                 }
-                break;
+                case "ataque": {
+                    int buff = Dados.D4();
+                    personagem.addAtaque(buff);
+                    System.out.println(personagem.getNome() + " usa " + atual.getNome() + " e ganha +" + buff + " de ATK.");
+                    break;
+                }
+                case "cura": {
+                    int cura = Dados.D6() + 2;
+                    personagem.addVida(cura);
+                    System.out.println(personagem.getNome() + " usa " + atual.getNome() + " e cura " + cura + " de vida.");
+                    break;
+                }
+                case "dano": {
+                    if (inimigo == null) {
+                        System.out.println("Não há inimigo para receber o dano deste item.");
+                        return;
+                    }
+                    int dano = Dados.D10() + Dados.D6();
+                    inimigo.subtraiVida(dano);
+                    System.out.println(personagem.getNome() + " usa " + atual.getNome() + "!");
+                    System.out.println("A onda sonora atinge " + inimigo.getNome() + " causando " + dano + " de dano!");
+                    break;
+                }
+                default:
+                    System.out.println("Efeito desconhecido para o item: " + atual.getEfeito());
+                    return;
             }
+            atual.setQuantidade(atual.getQuantidade() - 1);
+            if (atual.getQuantidade() <= 0) {
+                personagem.getInventario().removerItem(atual.getNome(), 1);
+            }
+            return;
         }
 
-        if (!encontrado) {
-            System.out.println("Item não encontrado no inventário!");
-        }
+        System.out.println("Item não encontrado no inventário!");
     }
+
 
 
     public static void fugir(BasePersonagens personagem) throws Exception{
