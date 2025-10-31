@@ -78,8 +78,10 @@ public class Main {
             }
             //a1p1.lerArquivo();
 
-            TelaJogo.ChamarTela(heroi);
+            TelaJogo.ChamarTela(heroi, "ato1part1decisao.txt");
             if (heroi.getPontosVida() == 0) return;
+            //a1p2.lerArquivo();
+
 
 
         } catch (Exception e) {

@@ -1,14 +1,14 @@
 package rpg.telas;
 
 import java.util.Scanner;
+import rpg.LeitorDeArquivosTxt;
 import rpg.Jogo;
 import rpg.itens.Itens;
 import rpg.personagens.BasePersonagens;
 import rpg.personagens.inimigos.*;
 
 public class TelaJogo {
-
-    public static void ChamarTela(BasePersonagens jogador) throws Exception {
+    public static void ChamarTela(BasePersonagens jogador, String atoParte) throws Exception {
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("----------------------------------------------");
@@ -73,6 +73,8 @@ public class TelaJogo {
                     }
                     break;
                 case 3:
+                    LeitorDeArquivosTxt leitor = new LeitorDeArquivosTxt(atoParte);
+                    leitor.lerArquivo();
                     break;
                 case 4:
                     jogador.getInventario().mostrarInventario();

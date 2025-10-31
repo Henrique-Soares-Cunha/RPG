@@ -113,6 +113,7 @@ public class Inventario implements Cloneable {
      @since 1.0
      */
     public void mostrarInventario(){
+        if (this.totalItens() == 0) {System.out.println("inventário vazio"); return;}
         System.out.println("- - - Inventario - - -");
         List <Itens> ordem = this.listarItensOrdenados();
         for (int i = 0; i < ordem.size(); i++){

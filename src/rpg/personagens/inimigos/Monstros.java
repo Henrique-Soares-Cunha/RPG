@@ -38,7 +38,7 @@ public abstract class Monstros extends BasePersonagens {
         return this.ataque * Dados.D10() / 2;
     }
     public int instrumentoProfano(){
-        return this.ataque * Dados.Dpersonalizado(5,15) / 2;
+        return this.ataque * Dados.DPersonalizado(5,15) / 2;
     }
 }
 
