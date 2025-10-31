@@ -60,7 +60,7 @@ public class Main {
 
                     break;
                 default:
-                    System.out.println("classe invalida vagabundo nesse caso vc perdeu");
+                    System.out.println("Classe invalida");
                     break;
             }
             
