@@ -25,9 +25,13 @@ public class Jogo {
             System.out.println("Voce encontrou um item");
             return 3;
         }
-        if (dado >= 11 && dado <= 12){
+        if (dado == 11){
             System.out.println("Voce encontrou um ótimo item");
             return 4;
+        }
+        if (dado == 12){
+            System.out.println("Voce encontrou um item de cura");
+            return 5;
         }
         return 100;
     }
@@ -84,9 +88,9 @@ public class Jogo {
     }
     public static int fugir(BasePersonagens personagem){
         int valor = Dados.D20();
-        if (valor <= 14){
+        if (valor <= 18){
             System.out.println("você falhou em fugir e tomou um ataque de oportunidade");
-            personagem.subtraiVida((int) (Dados.D4()));
+            personagem.subtraiVida((int) (Dados.D6()));
             return 1;
         }
         System.out.println("Voce fugiu");
@@ -98,5 +102,26 @@ public class Jogo {
             return true;
         }
         return false;
+    }
+    public static void finalizarAto(BasePersonagens heroi) throws Exception {
+        Scanner input = new Scanner(System.in);
+        heroi.FimAto();
+        int ataque = 0 , defesa = 0, vida = 0 , teste;
+        for (int i = 0 ; i < 3 ; i++){
+            System.out.println("Você subiu de nivel vc quer seus pontos em: 1-ataque 2-defesa 3-vida");
+            teste = input.nextInt();
+            switch (teste){
+                case 1:
+                    ataque += 1;
+                case 2:
+                    defesa += 1;
+                case 3:
+                    defesa += 1;
+                default:
+                    System.out.println("Opção invalida");
+                    i --;
+            }
+        }
+        heroi.DistribuirPontos(ataque, defesa, vida);
     }
 }

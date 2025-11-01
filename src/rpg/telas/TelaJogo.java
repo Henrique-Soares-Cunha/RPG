@@ -8,7 +8,7 @@ import rpg.personagens.BasePersonagens;
 import rpg.personagens.inimigos.*;
 
 public class TelaJogo {
-    public static void ChamarTela(BasePersonagens jogador, String atoParte) throws Exception {
+    public static void ChamarTela(BasePersonagens jogador, String atoParte, Monstros inimigo) throws Exception {
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("----------------------------------------------");
@@ -37,6 +37,9 @@ public class TelaJogo {
                             System.out.println("Você achou a Guitarra Harmonica");
                             jogador.getInventario().adicionarItem(new Itens("Guitarra Harmônica", "uma guitarra superefetivo contra o regime com som devastador" , 1, "dano"));
                             break;
+                        case 5:
+                            System.out.println("Você acho a harpa de cura");
+                            jogador.getInventario().adicionarItem(new Itens("Harpa de cura" , "recupera vida" , 1 , "cura"));
                         default:
                             break;
                     }
@@ -75,7 +78,22 @@ public class TelaJogo {
                 case 3:
                     LeitorDeArquivosTxt leitor = new LeitorDeArquivosTxt(atoParte);
                     leitor.lerArquivo();
-                    break;
+                    opcao = sc.nextInt();
+                    if (opcao == 1) {
+                        System.out.println("vice achou o item harpa de cura!!!");
+                        jogador.getInventario().adicionarItem(new Itens("Harpa de cura" , "recupera vida" , 1 , "cura"));
+                    }
+                    if (opcao == 2) {
+                        System.out.println("voce não conseguiu fazer isso dadas as circunstancias, os inimigos veem até vc");
+                        jogador.subtraiVida(1);
+                    }
+                    TelaCombate combateDoAto = new TelaCombate(jogador, new SargentoDaDitadura("V.Siqueira" , 1 , 1, 1, 1));
+                    combateDoAto.exibirTelaCombate();
+                    combateDoAto = new TelaCombate(jogador,inimigo);
+                    combateDoAto.exibirTelaCombate();
+                    if (jogador.getPontosVida() == 0) return;
+                    System.out.println("Voce passou da Parte!!");
+                    return;
                 case 4:
                     jogador.getInventario().mostrarInventario();
                     break;

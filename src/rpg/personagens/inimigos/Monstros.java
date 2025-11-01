@@ -3,10 +3,26 @@ package rpg.personagens.inimigos;
 import rpg.personagens.BasePersonagens;
 import rpg.Dados;
 
-public abstract class Monstros extends BasePersonagens {
+public abstract class Monstros extends BasePersonagens implements Cloneable{
 
     public Monstros(String nome, int pontosVida, int ataque, int defesa, int nivel) throws Exception {
         super(nome, pontosVida, ataque, defesa, nivel);
+
+        try{
+            this.setNome(nome);
+            this.setAtaque(ataque);
+            this.setDefesa(defesa);
+            this.setNivel(nivel);
+            this.setPontosVida(pontosVida);
+
+        } catch (Exception e){
+            throw e;
+        }
+
+    }
+
+    public Monstros(Monstros monstro , String nome) throws Exception {
+        super(nome, monstro.getPontosVida() , monstro.getAtaque(), monstro.getDefesa(), monstro.getNivel());
 
         try{
             this.setNome(nome);

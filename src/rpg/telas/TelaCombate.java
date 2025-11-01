@@ -79,6 +79,8 @@ public class TelaCombate {
             if (opcao == 2)  {
                 if (Jogo.fugir(jogador) == 0){
                     System.out.println("\nVocê fugiu da batalha.");
+                    System.out.println("você perdeu");
+                    jogador.setPontosVida(0);
                     break; // fugiu
                 }
             }

@@ -26,7 +26,7 @@ public class Funkeiro extends BasePersonagens {
 
         int buff = Dados.D4();
         inimigo.addAtaque(buff);
-        System.out.println ("Causou " + dano + "de dano ao " + inimigo.getNome() + " e ganhou " + buff + " de ataque");
+        System.out.println ("Causou " + dano + " de dano ao " + inimigo.getNome() + " e ganhou " + buff + " de ataque");
 
     }
 }
