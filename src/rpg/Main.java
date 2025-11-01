@@ -102,7 +102,7 @@ public class Main {
             TelaJogo.ChamarTela(heroi, "ato4part1decisao.txt" , new GeneralDaDitadura("Soares" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             //a4p2.lerArquivo();
-            TelaJogo.ChamarTela(heroi, "ato4part2decisao.txt" , new SoldadoDaDitadura("Hernique" , 1 , 1 , 1 ,1));
+            TelaJogo.ChamarTela(heroi, "ato4part2decisao.txt" , new ZharKonn("Zbrevalhe" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             a5.lerArquivo();
 

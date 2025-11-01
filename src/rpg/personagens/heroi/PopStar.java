@@ -21,7 +21,7 @@ public class PopStar extends BasePersonagens {
      */
     public void habilidadeEspecial(BasePersonagens inimigo) throws Exception {
         System.out.println("Pop Star brilha intensamente!");
-        int dano = this.getAtaque() + Dados.D4();
+        int dano = this.ataque / 2 + Dados.D4() * this.ataque;
         int reducaoDef = Dados.D4();
 
         inimigo.reducaoDefesa(reducaoDef);

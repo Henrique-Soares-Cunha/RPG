@@ -94,7 +94,7 @@ public class TelaCombate {
         switch (opcao) {
             case 1:
                 System.out.println("Você atacou " + inimigo.getNome() + "!");
-                inimigo.subtraiVida(Math.max(0, (int)(jogador.getAtaque() * Dados.D4() / 1.5)));
+                inimigo.subtraiVida(Math.max(0, (int)(jogador.getAtaque() + Dados.D4())));
                 break;
             case 2:
                 System.out.println("Você decide fugir da batalha...");
