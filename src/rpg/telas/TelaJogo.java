@@ -21,12 +21,12 @@ public class TelaJogo {
                     int a = Jogo.Explorar();
                     switch (a){
                         case 0:
-                            TelaCombate armadilha = new TelaCombate(jogador, new SargentoDaDitadura("matheus", 1,1,1,1));
+                            TelaCombate armadilha = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura", 1,1,1,1));
                             jogador.subtraiVida(2);
                             armadilha.exibirTelaCombate();
                             break;
                         case 1:
-                            TelaCombate arapuca = new TelaCombate(jogador, new SargentoDaDitadura("PC", 1,1,1,1));
+                            TelaCombate arapuca = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura", 1,1,1,1));
                             arapuca.exibirTelaCombate();
                             break;
                         case 3:
@@ -87,7 +87,7 @@ public class TelaJogo {
                         System.out.println("voce não conseguiu fazer isso dadas as circunstancias, os inimigos veem até vc");
                         jogador.subtraiVida(1);
                     }
-                    TelaCombate combateDoAto = new TelaCombate(jogador, new SargentoDaDitadura("V.Siqueira" , 1 , 1, 1, 1));
+                    TelaCombate combateDoAto = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura" , 1 , 1, 1, 1));
                     combateDoAto.exibirTelaCombate();
                     combateDoAto = new TelaCombate(jogador,inimigo);
                     combateDoAto.exibirTelaCombate();

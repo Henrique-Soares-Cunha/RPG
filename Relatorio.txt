@@ -1,0 +1,150 @@
+RELATÓRIO DE – PROJETO RPG
+Nomes dos integrantes:
+
+Henrique Soares Cunha 23013359
+Juliano Perusso 24023434 
+
+---------------------------------------------------
+
+
+O projeto "RPG SINFONIA DA RESISTENCIA" tem como objetivo desenvolver um jogo de RPG textual em Java, com sistema de combate por turnos, personagens com habilidades únicas, e uma narrativa ambientada em um universo musical. 
+Durante o desenvolvimento, foram criados diversos módulos e classes para compor o sistema principal, incluindo mecânicas de combate, gerenciamento de inventário, exploração e história.
+
+
+Contribuição do Juliano
+
+A narrativa foi dividida em atos e partes (Introdução, Ato 1 Parte 1, Ato 1 Parte 2, Ato 2 Parte 1, Ato 2 Parte 2, Ato 3 Parte 1, Ato 4 Parte 1, Ato 4 Parte 2 e Ato 5 – Final), sendo totalmente roteirizada e com narração por áudio na introdução.
+
+---------------------------------------------------
+2. HISTÓRIA E NARRAÇÃO
+Toda a história do jogo foi escrita e dividida em arquivos de texto, simulando a progressão narrativa.  
+A introdução é lida automaticamente através da classe `LeitorDeArquivosTxt`, que imprime o texto letra por letra no terminal, criando um efeito cinematográfico.
+
+Além disso, foi implementado um **áudio de narração** (arquivo `.wav`) que é reproduzido junto da introdução utilizando a classe `Narracao`, tornando a imersão mais profunda para o jogador.
+
+---------------------------------------------------
+3. CLASSES DE HERÓIS
+Foram implementadas nove classes de heróis musicais, cada uma com atributos e habilidades especiais únicas:
+- **DeeJay** – Reduz o dano do inimigo com sua batida hipnótica.
+- **Funkeiro** – Realiza o “Passinho Mítico”, ganhando um buff de ataque.
+- **Gospeiro** – Utiliza “Luz Divina” para se curar.
+- **Jazzista** – Executa o “Ritmo Contagiante”, capaz de causar dano crítico.
+- **Metaleiro** – Usa a “Guitarra Maligna” para causar dano massivo, mas perde parte da própria vida.
+- **Pop Star** – Aplica um debuff na defesa do inimigo com o “Brilho das Estrelas”.
+- **Rapper** – Dano verdadeiro (visão da rima).
+- **Roqueiro** – Executa o “Solo Estridente”, com chance de dano crítico em dobro.
+- **Sambista** – Aumenta sua defesa ao tocar o “Surdo Viciante”.
+
+Cada herói possui um construtor específico que define seus atributos de vida, ataque, defesa e nível, além da lógica de suas habilidades especiais implementadas diretamente em suas classes.
+
+---------------------------------------------------
+4. CLASSES DE INIMIGOS
+Foram criadas as classes que representam os inimigos do regime da Ditadura Musical:
+- SoldadoDaDitadura
+- SargentoDaDitadura
+- CapitaoDaDitadura
+- ZharKonn
+
+Essas classes herdam de `Monstros`, que por sua vez herda de `BasePersonagens`, permitindo reaproveitamento de código e métodos como ataques, cálculo de dano e pontos de vida.
+
+A classe **Monstros** também centraliza o comportamento básico dos inimigos e define ataques simples (como soco, facada e tiro, raio laser e instrumento profano), usados no combate.
+
+---------------------------------------------------
+5. CLASSE INVENTÁRIO
+A classe `Inventario` foi implementada para permitir o gerenciamento de itens durante o jogo.  
+Ela oferece métodos para:
+- Adicionar e remover itens.
+- Listar os itens ordenados em ordem crescente de quantidade.
+- Mostrar o inventário formatado no terminal.
+- Clonar inventários (usado para simular drops de inimigos).
+- Limitar a capacidade máxima de itens.
+
+Foi implementado também o **construtor de cópia** e o método `clone()` para permitir que o inventário possa ser duplicado sem compartilhar as mesmas referências de itens.
+
+---------------------------------------------------
+
+---------------------------------------------------
+6. CLASSE MONSTROS
+A classe `Monstros` é a base para todos os inimigos do jogo.  
+Ela herda de `BasePersonagens` e define ataques simples (como `soco`, `facada`, `tiro`, `raioLaser` e `instrumentoProfano`).  
+
+Contribuiu com o Henrique na telaCombate fazendo a estrutura visual e colaborando no debug da mesma;
+
+Nota do Juliano: 8,5
+--------------------------------------------------- 
+---------------------------------------------------
+
+
+Contribuição do Henrique:
+
+Foi responsável por desenvolver e integrar partes fundamentais do sistema central do jogo, atuando tanto na codificação quanto no processo de depuração e otimização do projeto.
+
+As principais contribuições incluem:
+
+
+ CLASSE ITENS
+A classe `Itens` define os objetos utilizáveis no jogo, contendo:
+- Nome
+- Descrição
+- Quantidade
+- Efeito (cura, dano, defesa, ataque)
+
+Ela implementa `Comparable` e `equals`, permitindo ordenação e comparação de itens dentro do inventário.  
+Cada item tem um papel específico — por exemplo:
+
+- **Guitarra Harmônica** causa dano ao inimigo.
+- **Escudo Harmônico** aumenta a defesa do jogador.
+• **Classe Main**  
+
+  Implementou o ponto de entrada do projeto, gerenciando a execução inicial do jogo, a chamada da narração, a leitura da história e o fluxo principal de menus.  
+  Também foi responsável por integrar as classes de personagens, inimigos e telas (como a `TelaCombate` e a `TelaJogo`), garantindo que o jogo fosse executado corretamente do início ao fim.
+
+• **Classe Dados**  
+  Criou a classe utilitária responsável pelos dados aleatórios do jogo (rolagem de dados D4, D6, D8, D10, D12, D20, etc.), utilizada em todos os cálculos de dano, cura, buffs e eventos de combate.  
+  Essa classe é essencial para manter a aleatoriedade e o equilíbrio das batalhas.
+
+• **Classe Jogo**  
+  Desenvolveu a lógica de suporte geral do jogo, incluindo métodos como:
+  - "Explorar()", que define os eventos aleatórios de exploração (encontrar inimigos, armadilhas ou itens);
+  - "usarItem()", responsável por aplicar os efeitos dos itens (cura, dano, defesa e ataque);
+  - "fugir()", que rola um D20 para determinar se o jogador consegue escapar do combate.
+
+  Essa classe atua como o núcleo da jogabilidade fora e dentro do combate.
+
+• Classe TelaCombate 
+  Implementou a interface textual de combate, permitindo que o jogador escolha ações durante a luta:
+  - Atacar
+  - Fugir
+  - Mostrar Inventário
+  - Usar Itens
+  - Executar Ataque Especial  
+  Também desenvolveu a lógica de turnos, verificando a vida de ambos os personagens e controlando as ações do inimigo de forma equilibrada.
+
+• **Classe TelaJogo**  
+  Criou a lógica de exploração e menus fora do combate. Essa tela permite ao jogador:
+  - Explorar o mapa
+  - Encontrar inimigos
+  - Acessar o inventário
+  - Utilizar itens fora de combate  
+  A classe foi estruturada para servir como o elo entre a história e o sistema de batalhas.
+
+• **Classe BasePersonagens**  
+  Estruturou a classe base de todos os personagens do jogo (heróis e inimigos), definindo atributos e métodos universais, como:
+  - Vida, ataque, defesa e nível
+  - Métodos de adicionar ou subtrair vida, defesa e ataque
+  - Método genérico `habilidadeEspecial()` para ser sobrescrito pelas subclasses de heróis e monstros.  
+  Essa classe permitiu um alto nível de reutilização e padronização no código.
+
+• **LeitorDeArquivosTxt**  
+  Implementou o sistema de leitura de arquivos `.txt`, usado para exibir a história no terminal
+
+Nota do Henrique: 9
+
+
+
+		CONCLUSÃO
+O projeto alcançou um nível avançado de estruturação, com mecânicas de combate completas, habilidades personalizadas, sistema de inventário funcional e integração com narrativa e áudio.  
+O código foi organizado em pacotes (`rpg.herois`, `rpg.inimigos`, `rpg.telas`, `rpg.itens`, etc.), garantindo modularidade e legibilidade.
+  
+
+---------------------------------------------------

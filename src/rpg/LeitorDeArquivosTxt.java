@@ -13,7 +13,7 @@ public class LeitorDeArquivosTxt {
      @param arq: o nome do arquivo que será lido
      @since 1.0*/
     public LeitorDeArquivosTxt(String arq) throws FileNotFoundException {
-        leitor = new BufferedReader(new FileReader("src/rpg/historia/"+arq));
+        leitor = new BufferedReader(new FileReader("../src/rpg/historia/"+arq));
         linha = null;
     }
 
