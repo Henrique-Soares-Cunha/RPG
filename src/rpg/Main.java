@@ -33,7 +33,7 @@ public class Main {
             LeitorDeArquivosTxt a4p1 = new LeitorDeArquivosTxt("A4P1.txt");
             LeitorDeArquivosTxt a4p2 = new LeitorDeArquivosTxt("A4P2.txt");
             LeitorDeArquivosTxt a5 = new LeitorDeArquivosTxt("A5Final.txt");
-            //introdução.lerArquivo();
+            introdução.lerArquivo();
 
             Scanner input = new Scanner(System.in);
             int o;
@@ -76,32 +76,32 @@ public class Main {
                     System.out.println("Classe invalida");
                     break;
             }
-            //a1p1.lerArquivo();
+            a1p1.lerArquivo();
 
             TelaJogo.ChamarTela(heroi, "ato1part1decisao.txt" , new SoldadoDaDitadura("Hernique" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
-            //a1p2.lerArquivo();
+            a1p2.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato1part2decisao.txt" , new SargentoDaDitadura("Hernique De Novo" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             Jogo.finalizarAto(heroi);
-            //a2p1.lerArquivo();
+            a2p1.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato2part1decisao.txt" , new SargentoDaDitadura("Mathias" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
-            //a2p2.lerArquivo();
+            a2p2.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato2part2decisao.txt" , new CapitaoDaDitadura("Nascimento" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             Jogo.finalizarAto(heroi);
-            //a3p1.lerArquivo();
+            a3p1.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato3part1decisao.txt" , new CapitaoDaDitadura("Montoro" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
-            //a3p2.lerArquivo();
+            a3p2.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato3part2decisao.txt" , new GeneralDaDitadura("Brandão" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             Jogo.finalizarAto(heroi);
-            //a4p1.lerArquivo();
+            a4p1.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato4part1decisao.txt" , new GeneralDaDitadura("Soares" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
-            //a4p2.lerArquivo();
+            a4p2.lerArquivo();
             TelaJogo.ChamarTela(heroi, "ato4part2decisao.txt" , new ZharKonn("Zbrevalhe" , 1 , 1 , 1 ,1));
             if (heroi.getPontosVida() == 0) return;
             a5.lerArquivo();
