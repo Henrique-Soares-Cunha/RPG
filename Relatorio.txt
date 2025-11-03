@@ -70,7 +70,7 @@ Ela herda de `BasePersonagens` e define ataques simples (como `soco`, `facada`, 
 
 Contribuiu com o Henrique na telaCombate fazendo a estrutura visual e colaborando no debug da mesma;
 
-Nota do Juliano: 8,5
+Nota do Juliano: 9,0
 --------------------------------------------------- 
 ---------------------------------------------------
 

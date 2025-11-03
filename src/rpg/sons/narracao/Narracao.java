@@ -11,7 +11,7 @@ public class Narracao {
     public void tocarNarracao() {
         try {
             // Caminho relativo dentro da pasta src
-            File arquivo = new File("../narracao.wav");
+            File arquivo = new File("narracao.wav");
 
             if (!arquivo.exists()) {
                 System.out.println("Arquivo de narração não encontrado em: " + arquivo.getAbsolutePath());

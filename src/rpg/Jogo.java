@@ -113,13 +113,17 @@ public class Jogo {
             switch (teste){
                 case 1:
                     ataque += 1;
+                    break;
                 case 2:
                     defesa += 1;
+                    break;
                 case 3:
-                    defesa += 1;
+                    vida += 1;
+                    break;
                 default:
                     System.out.println("Opção invalida");
                     i --;
+                    break;
             }
         }
         heroi.DistribuirPontos(ataque, defesa, vida);

@@ -24,10 +24,12 @@ public class TelaJogo {
                             TelaCombate armadilha = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura", 1,1,1,1));
                             jogador.subtraiVida(2);
                             armadilha.exibirTelaCombate();
+                            if (jogador.getPontosVida() <= 0) return;
                             break;
                         case 1:
                             TelaCombate arapuca = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura", 1,1,1,1));
                             arapuca.exibirTelaCombate();
+                            if (jogador.getPontosVida() <= 0) return;
                             break;
                         case 3:
                             System.out.println("Você achou o Escudo Harmônico");
@@ -76,16 +78,20 @@ public class TelaJogo {
                     }
                     break;
                 case 3:
-                    LeitorDeArquivosTxt leitor = new LeitorDeArquivosTxt(atoParte);
-                    leitor.lerArquivo();
-                    opcao = sc.nextInt();
-                    if (opcao == 1) {
-                        System.out.println("vice achou o item harpa de cura!!!");
-                        jogador.getInventario().adicionarItem(new Itens("Harpa de cura" , "recupera vida" , 1 , "cura"));
-                    }
-                    if (opcao == 2) {
-                        System.out.println("voce não conseguiu fazer isso dadas as circunstancias, os inimigos veem até vc");
-                        jogador.subtraiVida(1);
+                    while (true) {
+                        LeitorDeArquivosTxt leitor = new LeitorDeArquivosTxt(atoParte);
+                        leitor.lerArquivo();
+                        opcao = sc.nextInt();
+                        if (opcao == 1) {
+                            System.out.println("vice achou o item harpa de cura!!!");
+                            jogador.getInventario().adicionarItem(new Itens("Harpa de cura", "recupera vida", 1, "cura"));
+                            break;
+                        }
+                        if (opcao == 2) {
+                            System.out.println("voce não conseguiu fazer isso dadas as circunstancias, os inimigos veem até vc");
+                            jogador.subtraiVida(1);
+                            break;
+                        }
                     }
                     TelaCombate combateDoAto = new TelaCombate(jogador, new SargentoDaDitadura("Sargento Da Ditadura" , 1 , 1, 1, 1));
                     combateDoAto.exibirTelaCombate();

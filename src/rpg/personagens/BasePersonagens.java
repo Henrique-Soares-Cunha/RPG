@@ -85,9 +85,9 @@ public abstract class BasePersonagens {
      */
     public void DistribuirPontos(int pontosAtaque , int pontosDefesa, int pontosVida) throws Exception {
         this.addNivel();
-        if (pontosAtaque > 0) this.addAtaque(pontosAtaque); this.ataquePadrao += pontosAtaque;
-        if (pontosDefesa > 0) this.addDefesa(pontosDefesa); this.defesaPadrao += pontosDefesa;
-        if (pontosVida > 0) this.addVida(pontosVida);this.vidaMaxima+=pontosVida;
+        if (pontosAtaque > 0) this.setAtaque(pontosAtaque + this.ataquePadrao);
+        if (pontosDefesa > 0) this.setDefesa(pontosDefesa + this.defesaPadrao);
+        if (pontosVida > 0) {this.setPontosVida(this.vidaMaxima + pontosVida);}
     }
 
     /**Re arrumar atributos
@@ -102,6 +102,10 @@ public abstract class BasePersonagens {
 
     //manipular atributos int
     public int addVida(int vida){
+        if(this.vidaMaxima <= this.pontosVida + vida) {
+            this.pontosVida = this.vidaMaxima;
+            return this.pontosVida;
+        }
         this.pontosVida = this.pontosVida + vida;
         return this.pontosVida;
     }

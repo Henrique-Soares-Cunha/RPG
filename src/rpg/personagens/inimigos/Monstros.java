@@ -39,12 +39,10 @@ public abstract class Monstros extends BasePersonagens implements Cloneable{
 
     public int soco(){
         int dano =this.ataque * Dados.D4() / 2;
-        System.out.println("Dano: " + dano);
         return dano;
     }
     public int facada(){
         int dano =this.ataque * Dados.D6() / 2;
-        System.out.println("Dano: " + dano);
         return dano;
     }
     public int tiro(){
@@ -54,7 +52,7 @@ public abstract class Monstros extends BasePersonagens implements Cloneable{
         return this.ataque * Dados.D10() / 2;
     }
     public int instrumentoProfano(){
-        return this.ataque * Dados.DPersonalizado(5,15) / 2;
+        return this.ataque * Dados.DPersonalizado(4,12) / 4;
     }
 }
 
